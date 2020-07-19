@@ -1,5 +1,6 @@
 # asks user to only enter the following shapes
 print()
+print("this program is used to calculate the area and perimeter of certain shapes")
 print("choose one of the following shapes: "
       "square, rectangle, "
       "circle, triangle, "
@@ -65,6 +66,7 @@ def no_letters(question):
                 break
 
 
+# asks if user wants to end program and prints list at end
 def finish(question):
 
     valid = False
@@ -207,5 +209,6 @@ while keep_going == "":
             print("perimeter =", p)
             print()
 
+    # ends keep going statement, ends program or continues depending on user input
     keep_going = finish("press <enter> to continue or and key to quit")
     print()
