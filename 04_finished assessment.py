@@ -6,6 +6,7 @@ print("choose one of the following shapes: "
       "circle, triangle, "
       "parallelogram")
 print()
+
 # what user is allowed to input after the questions, the allowed shapes, area / perimeter and units.
 valid_shapes = ["square", "rectangle", "circle", "triangle", "parallelogram","s","r","c","t","p"]
 valid_ap = ["area", "perimeter"]
@@ -101,9 +102,9 @@ def finish(question):
             calc_list.append(calc)
             for item in calc_list:
                 if choose_ap == "area":
-                    print("{}, area = {}{}^2".format(item[0], item[1], item[2]))
+                    print("{}, area = {}{}^2  |  ".format(item[0], item[1], item[2]))
                 else:
-                    print("{}, perimeter = {}{}".format(item[0], item[1], item[2]))
+                    print("{}, perimeter = {}{}  |  ".format(item[0], item[1], item[2]))
             break
 
 
@@ -211,6 +212,9 @@ while keep_going == "":
             side_a = no_letters("what is side a? ")
             side_b = no_letters("what is side b? ")
             side_c = no_letters("what is side c? ")
+            side_a = float(side_a)
+            side_b = float(side_b)
+            side_c = float(side_c)
             p = side_a+side_b+side_c
             answer = p
             calc.append(choose_shape)
