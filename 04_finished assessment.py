@@ -8,7 +8,7 @@ print("choose one of the following shapes: "
 print()
 
 # what user is allowed to input after the questions, the allowed shapes, area / perimeter and units.
-valid_shapes = ["square", "rectangle", "circle", "triangle", "parallelogram","s","r","c","t","p"]
+valid_shapes = ["square", "rectangle", "circle", "triangle", "parallelogram", "s", "r", "c", "t", "p"]
 valid_ap = ["area", "perimeter"]
 
 # calculation list
@@ -25,7 +25,7 @@ def shape_checker(question):
         response = input(question)
 
         if response.lower() in valid_shapes:
-            print("you chose {}".format(response.lower()))
+            print("your chosen shape is acceptable")
             return response
 
         elif response.lower() not in valid_shapes:
@@ -42,7 +42,7 @@ def ap_checker(question):
         response = input(question)
 
         if response.lower() in valid_ap:
-            print("you chose {}".format(response.lower()))
+            print("your chosen calculation type is acceptable")
             return response
 
         elif response.lower() not in valid_ap:
@@ -60,30 +60,29 @@ def not_blank(question):
         response = input(question)
 
         if response.lower() == "":
-            print (error)
+            print(error)
             continue
 
         elif response.lower() != "":
-            print("you chose {}".format(response.lower()))
+            print("your chosen unit is acceptable")
             return response
 
 # does not let letters in the dimensions input
 
 
 def no_letters(question):
-    error = "you may only input numbers here"
+    error = "please enter a valid number input"
     valid = False
     while not valid:
-        response = input(question)
-
-        for letter in response:
-
-            if letter.isdigit():
-                return response
-
-            elif not letter.isdigit():
+        try:
+            response = float(input(question))
+            if response <= 0:
                 print(error)
-                break
+            else:
+                return response
+        except ValueError:
+            print(error)
+
 
 # asks if user wants to end program and prints list at end
 
@@ -141,7 +140,7 @@ while keep_going == "":
             calc.append(choose_shape)
             calc.append(answer)
             calc.append(choose_unit)
-            print("Area =", a)
+            print("Area =", a,)
             print()
 
         elif choose_ap == "perimeter":
