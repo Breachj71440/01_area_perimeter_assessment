@@ -6,8 +6,9 @@ print("choose one of the following shapes: "
       "circle, triangle, "
       "parallelogram")
 print()
-# what user is allowed to input after the questions
-valid_shapes = ["square", "rectangle", "circle", "triangle", "parallelogram"]
+
+# what user is allowed to input after the questions, the allowed shapes, area / perimeter and units.
+valid_shapes = ["square", "rectangle", "circle", "triangle", "parallelogram", "s", "r", "c", "t", "p"]
 valid_ap = ["area", "perimeter"]
 
 # calculation list
@@ -24,7 +25,7 @@ def shape_checker(question):
         response = input(question)
 
         if response.lower() in valid_shapes:
-            print("you chose {}".format(response.lower()))
+            print("your chosen shape is acceptable")
             return response
 
         elif response.lower() not in valid_shapes:
@@ -41,32 +42,51 @@ def ap_checker(question):
         response = input(question)
 
         if response.lower() in valid_ap:
-            print("you chose {}".format(response.lower()))
+            print("your chosen calculation type is acceptable")
             return response
 
         elif response.lower() not in valid_ap:
             print(error)
             continue
 
+# doesn't let the unit input be blank, however pretty much any unit can be used even if it doesn't make sense
 
-# does not let letters in the dimensions input
-def no_letters(question):
-    error = "you may only input numbers here"
+
+def not_blank(question):
+    error = "Please enter a unit"
+
     valid = False
     while not valid:
         response = input(question)
 
-        for letter in response:
+        if response.lower() == "":
+            print(error)
+            continue
 
-            if letter.isdigit():
-                return response
+        elif response.lower() != "":
+            print("your chosen unit is acceptable")
+            return response
 
-            elif not letter.isdigit():
+# does not let letters in the dimensions input
+
+
+def no_letters(question):
+    error = "please enter a valid number input"
+    valid = False
+    while not valid:
+        try:
+            response = float(input(question))
+            if response <= 0:
                 print(error)
-                break
+            else:
+                return response
+        except ValueError:
+            print(error)
 
 
 # asks if user wants to end program and prints list at end
+
+
 def finish(question):
 
     valid = False
@@ -79,7 +99,11 @@ def finish(question):
 
         elif response != "":
             calc_list.append(calc)
-            print(calc_list)
+            for item in calc_list:
+                if choose_ap == "area":
+                    print("{}, area = {}{}^2  |  ".format(item[0], item[1], item[2]))
+                else:
+                    print("{}, perimeter = {}{}  |  ".format(item[0], item[1], item[2]))
             break
 
 
@@ -88,10 +112,13 @@ def finish(question):
 keep_going = ""
 while keep_going == "":
     calc = []
-    # user input for choosing shape and area or perimeter
-    # calculations from user input for all valid shapes
+    # user input for choosing shape, area or perimeter and unit being used
 
     choose_shape = shape_checker("what shape do you want? ")
+
+    print()
+
+    choose_unit = not_blank("what unit will you be using? ")
 
     print()
 
@@ -99,7 +126,9 @@ while keep_going == "":
 
     print()
 
-    if choose_shape == "rectangle":
+    # calculations from user input for all valid shapes
+
+    if choose_shape == "rectangle" or choose_shape == "r":
         base = no_letters("what is the base? ")
         height = no_letters("what is the height? ")
         base = float(base)
@@ -110,27 +139,28 @@ while keep_going == "":
             answer = a
             calc.append(choose_shape)
             calc.append(answer)
-            print("Area =", a)
+            calc.append(choose_unit)
+            print("Area =", a,)
             print()
 
         elif choose_ap == "perimeter":
             answer = p
             calc.append(choose_shape)
             calc.append(answer)
+            calc.append(choose_unit)
             print("Perimeter =", p)
             print()
 
-    if choose_shape == "square":
-        base = no_letters("what is the base? ")
-        height = no_letters("what is the height? ")
+    if choose_shape == "square" or choose_shape == "s":
+        base = no_letters("what is the side length? ")
         base = float(base)
-        height = float(height)
-        a = base * height
-        p = 2 * (base + height)
+        a = base * base
+        p = 2 * (base + base)
         if choose_ap == "area":
             answer = a
             calc.append(choose_shape)
             calc.append(answer)
+            calc.append(choose_unit)
             print("Area =", a)
             print()
 
@@ -138,10 +168,11 @@ while keep_going == "":
             answer = p
             calc.append(choose_shape)
             calc.append(answer)
+            calc.append(choose_unit)
             print("Perimeter =", p)
             print()
 
-    if choose_shape == "circle":
+    if choose_shape == "circle" or choose_shape == "c":
         radius = no_letters("what is the radius? ")
         radius = float(radius)
         p = 2*3.1415926535*radius
@@ -150,17 +181,19 @@ while keep_going == "":
             answer = a
             calc.append(choose_shape)
             calc.append(answer)
-            print("area =", a)
+            calc.append(choose_unit)
+            print("area = {:.2f}".format(a))
             print()
 
         if choose_ap == "perimeter":
             answer = p
             calc.append(choose_shape)
             calc.append(answer)
-            print("perimeter =", p)
+            calc.append(choose_unit)
+            print("perimeter = {:.2f}".format(p))
             print()
 
-    if choose_shape == "triangle":
+    if choose_shape == "triangle" or choose_shape == "t":
         if choose_ap == "area":
             base = no_letters("what is the base? ")
             height = no_letters("what is the height? ")
@@ -170,6 +203,7 @@ while keep_going == "":
             answer = a
             calc.append(choose_shape)
             calc.append(answer)
+            calc.append(choose_unit)
             print("area =", a)
             print()
 
@@ -177,14 +211,18 @@ while keep_going == "":
             side_a = no_letters("what is side a? ")
             side_b = no_letters("what is side b? ")
             side_c = no_letters("what is side c? ")
+            side_a = float(side_a)
+            side_b = float(side_b)
+            side_c = float(side_c)
             p = side_a+side_b+side_c
             answer = p
             calc.append(choose_shape)
             calc.append(answer)
+            calc.append(choose_unit)
             print("perimeter =", p)
             print()
 
-    if choose_shape == "parallelogram":
+    if choose_shape == "parallelogram" or choose_shape == "p":
         if choose_ap == "area":
             base = no_letters("what is the base? ")
             height = no_letters("what is the height? ")
@@ -194,6 +232,7 @@ while keep_going == "":
             answer = a
             calc.append(choose_shape)
             calc.append(answer)
+            calc.append(choose_unit)
             print("area =", a)
             print()
 
@@ -206,6 +245,7 @@ while keep_going == "":
             answer = p
             calc.append(choose_shape)
             calc.append(answer)
+            calc.append(choose_unit)
             print("perimeter =", p)
             print()
 
