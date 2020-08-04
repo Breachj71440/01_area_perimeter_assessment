@@ -101,9 +101,9 @@ def finish(question):
             calc_list.append(calc)
             for item in calc_list:
                 if choose_ap == "area":
-                    print("{}, {} = {}{}^2  |  ".format(item[0], item[1], item[2], item[3]))
+                    print("{}, {} = {:.2f}{}^2  |  ".format(item[0], item[1], item[2], item[3]))
                 elif choose_ap == "perimeter":
-                    print("{}, {} = {}{}  |  ".format(item[0], item[1], item[2], item[3]))
+                    print("{}, {} = {:.2f}{}  |  ".format(item[0], item[1], item[2], item[3]))
             return response
 
 
@@ -142,7 +142,7 @@ while keep_going == "":
             calc.append(choose_ap)
             calc.append(answer)
             calc.append(choose_unit)
-            print("Area =", a,)
+            print("Area = {:.2f}".format(a))
             print()
 
         elif choose_ap == "perimeter":
@@ -151,7 +151,7 @@ while keep_going == "":
             calc.append(choose_ap)
             calc.append(answer)
             calc.append(choose_unit)
-            print("Perimeter =", p)
+            print("perimeter = {:.2f}".format(p))
             print()
 
     if choose_shape == "square" or choose_shape == "s":
@@ -166,7 +166,7 @@ while keep_going == "":
             calc.append(choose_ap)
             calc.append(answer)
             calc.append(choose_unit)
-            print("Area =", a)
+            print("Area = {:.2f}".format(a))
             print()
 
         elif choose_ap == "perimeter":
@@ -175,7 +175,7 @@ while keep_going == "":
             calc.append(choose_ap)
             calc.append(answer)
             calc.append(choose_unit)
-            print("Perimeter =", p)
+            print("perimeter = {:.2f}".format(p))
             print()
 
     if choose_shape == "circle" or choose_shape == "c":
@@ -215,7 +215,7 @@ while keep_going == "":
             calc.append(choose_ap)
             calc.append(answer)
             calc.append(choose_unit)
-            print("area =", a)
+            print("area = {:.2f}".format(a))
             print()
 
         if choose_ap == "perimeter":
@@ -231,7 +231,7 @@ while keep_going == "":
             calc.append(choose_ap)
             calc.append(answer)
             calc.append(choose_unit)
-            print("perimeter =", p)
+            print("perimeter = {:.2f}".format(p))
             print()
 
     if choose_shape == "parallelogram" or choose_shape == "p":
@@ -247,7 +247,7 @@ while keep_going == "":
             calc.append(choose_ap)
             calc.append(answer)
             calc.append(choose_unit)
-            print("area =", a)
+            print("area = {:.2f}".format(a))
             print()
 
         if choose_ap == "perimeter":
@@ -261,7 +261,7 @@ while keep_going == "":
             calc.append(choose_ap)
             calc.append(answer)
             calc.append(choose_unit)
-            print("perimeter =", p)
+            print("perimeter = {:.2f}".format(p))
             print()
 
     # ends keep going statement, ends program or continues depending on user input
