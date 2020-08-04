@@ -101,10 +101,10 @@ def finish(question):
             calc_list.append(calc)
             for item in calc_list:
                 if choose_ap == "area":
-                    print("{}, area = {}{}^2  |  ".format(item[0], item[1], item[2]))
-                else:
-                    print("{}, perimeter = {}{}  |  ".format(item[0], item[1], item[2]))
-            break
+                    print("{}, {} = {}{}^2  |  ".format(item[0], item[1], item[2], item[3]))
+                elif choose_ap == "perimeter":
+                    print("{}, {} = {}{}  |  ".format(item[0], item[1], item[2], item[3]))
+            return response
 
 
 # main routine
@@ -139,6 +139,7 @@ while keep_going == "":
         if choose_ap == "area":
             answer = a
             calc.append(shape)
+            calc.append(choose_ap)
             calc.append(answer)
             calc.append(choose_unit)
             print("Area =", a,)
@@ -147,6 +148,7 @@ while keep_going == "":
         elif choose_ap == "perimeter":
             answer = p
             calc.append(shape)
+            calc.append(choose_ap)
             calc.append(answer)
             calc.append(choose_unit)
             print("Perimeter =", p)
@@ -161,6 +163,7 @@ while keep_going == "":
         if choose_ap == "area":
             answer = a
             calc.append(shape)
+            calc.append(choose_ap)
             calc.append(answer)
             calc.append(choose_unit)
             print("Area =", a)
@@ -169,6 +172,7 @@ while keep_going == "":
         elif choose_ap == "perimeter":
             answer = p
             calc.append(shape)
+            calc.append(choose_ap)
             calc.append(answer)
             calc.append(choose_unit)
             print("Perimeter =", p)
@@ -183,6 +187,7 @@ while keep_going == "":
         if choose_ap == "area":
             answer = a
             calc.append(shape)
+            calc.append(choose_ap)
             calc.append(answer)
             calc.append(choose_unit)
             print("area = {:.2f}".format(a))
@@ -191,6 +196,7 @@ while keep_going == "":
         if choose_ap == "perimeter":
             answer = p
             calc.append(shape)
+            calc.append(choose_ap)
             calc.append(answer)
             calc.append(choose_unit)
             print("perimeter = {:.2f}".format(p))
@@ -206,6 +212,7 @@ while keep_going == "":
             a = (base*height)/2
             answer = a
             calc.append(shape)
+            calc.append(choose_ap)
             calc.append(answer)
             calc.append(choose_unit)
             print("area =", a)
@@ -221,6 +228,7 @@ while keep_going == "":
             p = side_a+side_b+side_c
             answer = p
             calc.append(shape)
+            calc.append(choose_ap)
             calc.append(answer)
             calc.append(choose_unit)
             print("perimeter =", p)
@@ -236,6 +244,7 @@ while keep_going == "":
             a = base*height
             answer = a
             calc.append(shape)
+            calc.append(choose_ap)
             calc.append(answer)
             calc.append(choose_unit)
             print("area =", a)
@@ -249,6 +258,7 @@ while keep_going == "":
             p = 2*(base+side)
             answer = p
             calc.append(shape)
+            calc.append(choose_ap)
             calc.append(answer)
             calc.append(choose_unit)
             print("perimeter =", p)
