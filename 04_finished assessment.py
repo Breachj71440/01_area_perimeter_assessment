@@ -129,6 +129,7 @@ while keep_going == "":
     # calculations from user input for all valid shapes
 
     if choose_shape == "rectangle" or choose_shape == "r":
+        shape = "rectangle"
         base = no_letters("what is the base? ")
         height = no_letters("what is the height? ")
         base = float(base)
@@ -137,7 +138,7 @@ while keep_going == "":
         p = 2 * (base + height)
         if choose_ap == "area":
             answer = a
-            calc.append(choose_shape)
+            calc.append(shape)
             calc.append(answer)
             calc.append(choose_unit)
             print("Area =", a,)
@@ -145,20 +146,21 @@ while keep_going == "":
 
         elif choose_ap == "perimeter":
             answer = p
-            calc.append(choose_shape)
+            calc.append(shape)
             calc.append(answer)
             calc.append(choose_unit)
             print("Perimeter =", p)
             print()
 
     if choose_shape == "square" or choose_shape == "s":
+        shape = "square"
         base = no_letters("what is the side length? ")
         base = float(base)
         a = base * base
         p = 2 * (base + base)
         if choose_ap == "area":
             answer = a
-            calc.append(choose_shape)
+            calc.append(shape)
             calc.append(answer)
             calc.append(choose_unit)
             print("Area =", a)
@@ -166,20 +168,21 @@ while keep_going == "":
 
         elif choose_ap == "perimeter":
             answer = p
-            calc.append(choose_shape)
+            calc.append(shape)
             calc.append(answer)
             calc.append(choose_unit)
             print("Perimeter =", p)
             print()
 
     if choose_shape == "circle" or choose_shape == "c":
+        shape = "circle"
         radius = no_letters("what is the radius? ")
         radius = float(radius)
         p = 2*3.1415926535*radius
         a = 3.1415926535*(radius*radius)
         if choose_ap == "area":
             answer = a
-            calc.append(choose_shape)
+            calc.append(shape)
             calc.append(answer)
             calc.append(choose_unit)
             print("area = {:.2f}".format(a))
@@ -187,13 +190,14 @@ while keep_going == "":
 
         if choose_ap == "perimeter":
             answer = p
-            calc.append(choose_shape)
+            calc.append(shape)
             calc.append(answer)
             calc.append(choose_unit)
             print("perimeter = {:.2f}".format(p))
             print()
 
     if choose_shape == "triangle" or choose_shape == "t":
+        shape = "triangle"
         if choose_ap == "area":
             base = no_letters("what is the base? ")
             height = no_letters("what is the height? ")
@@ -201,7 +205,7 @@ while keep_going == "":
             height = float(height)
             a = (base*height)/2
             answer = a
-            calc.append(choose_shape)
+            calc.append(shape)
             calc.append(answer)
             calc.append(choose_unit)
             print("area =", a)
@@ -216,13 +220,14 @@ while keep_going == "":
             side_c = float(side_c)
             p = side_a+side_b+side_c
             answer = p
-            calc.append(choose_shape)
+            calc.append(shape)
             calc.append(answer)
             calc.append(choose_unit)
             print("perimeter =", p)
             print()
 
     if choose_shape == "parallelogram" or choose_shape == "p":
+        shape = "parallelogram"
         if choose_ap == "area":
             base = no_letters("what is the base? ")
             height = no_letters("what is the height? ")
@@ -230,7 +235,7 @@ while keep_going == "":
             height = float(height)
             a = base*height
             answer = a
-            calc.append(choose_shape)
+            calc.append(shape)
             calc.append(answer)
             calc.append(choose_unit)
             print("area =", a)
@@ -243,12 +248,12 @@ while keep_going == "":
             side = float(side)
             p = 2*(base+side)
             answer = p
-            calc.append(choose_shape)
+            calc.append(shape)
             calc.append(answer)
             calc.append(choose_unit)
             print("perimeter =", p)
             print()
 
     # ends keep going statement, ends program or continues depending on user input
-    keep_going = finish("press <enter> to continue or and key to quit")
+    keep_going = finish("press <enter> to continue or any key to quit")
     print()
